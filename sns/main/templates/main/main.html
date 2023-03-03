@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>글목록</h1>
+<div>
+{% for blog in blogs %}
+    <div>
+        <br>{{blog.title}}<br>
+        {{blog.writer}}<br>
+        {{blog.body}}
+        <a href="{% url 'showdetail' blog.id %}">..더보기</a>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
