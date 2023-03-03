@@ -3,14 +3,26 @@
 
 {% block content %}
 <h1>글목록</h1>
-<div>
-{% for blog in blogs %}
-    <div>
-        <br>{{blog.title}}<br>
-        {{blog.writer}}<br>
-        {{blog.body}}
-        <a href="{% url 'main:showdetail' blog.id %}">..더보기</a>
+<div class="container">
+    <div class="row">
+        {% for blog in blogs %}
+            <div class="col-md-3 col-6 item_list__card">
+                <div class="card" style="font-family: 'scd3';">
+                        <div class="card-body" style="font-size:16px">
+                            <h5 class="card-title">{{ blog.title }}</h5>
+                            {% if blog.writer %}
+                            작성자 : {{blog.writer}}<br>
+                            {% else %}
+                            작성자 : None<br>
+                            {% endif %}
+                            내용 : {{blog.summary}}
+                            <a href="{% url 'main:showdetail' blog.id %}">...자세히</a><br>
+                            {{blog.pub_date}}
+                            <br>
+                        </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-{% endfor %}
 </div>
 {% endblock %}

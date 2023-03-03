@@ -5,7 +5,7 @@ from users.models import User
 class Blog(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
-    writer = models.CharField(max_length=50)
+    writer = models.ForeignKey(User, on_delete=models.CASCADE)
     pub_date = models.DateField()
     body = models.TextField()
     like = models.ManyToManyField(User, related_name='likes',blank=True)
