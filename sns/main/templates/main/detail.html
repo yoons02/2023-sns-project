@@ -7,4 +7,17 @@
 {{blog.writer}}<br>
 {{blog.body}}<br>
 {{blog.pub_date}}
+
+<a href="{% url 'main:likes' blog.id %}">
+    {% if user in blog.like.all %}
+    취소
+    {% else %}
+    좋아요
+    {% endif %}
+</a>
+{{blog.like_count}}개
+
+<a href="{% url 'main:showupdate' blog.id %}">수정하기</a>
+<a href="{% url 'main:delete' blog.id %}">삭제하기</a>
+
 {% endblock %}

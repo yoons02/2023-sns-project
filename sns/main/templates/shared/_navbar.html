@@ -1,12 +1,25 @@
 <nav class="navbar bg-light fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">므쨍이 으르렁</a>
+      <a class="navbar-brand" href="{% url 'main:showmain' %}">므쨍이 으르렁</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Log In</h5>
+        {%if user.is_authenticated%}
+
+        <div class="offcanvas-title" id="offcanvasNavbarLabel">
+            <a href="{% url 'accounts:logout' %}">logout</a>
+        </div>
+
+        {%else%}
+
+        <div class="offcanvas-title" id="offcanvasNavbarLabel">
+            <a href="{% url 'accounts:login' %}">login</a>
+        </div>
+
+        {%endif%}
+
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -15,10 +28,10 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'shownew' %}">Create</a>
+              <a class="nav-link" href="{% url 'main:shownew' %}">Create</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">My page</a>
+                <a class="nav-link" href="{% url 'users:mypage' %}">My page</a>
             </li>
           </ul>
         </div>

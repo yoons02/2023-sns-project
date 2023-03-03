@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <h3>{{user.username}}</h3>
+    <div>
+        {% for blog in blogs %}
+        <a href="{% url 'main:showdetail' blog.id %}">{{blog.title}}</a>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

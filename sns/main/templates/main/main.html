@@ -9,7 +9,7 @@
         <br>{{blog.title}}<br>
         {{blog.writer}}<br>
         {{blog.body}}
-        <a href="{% url 'showdetail' blog.id %}">..더보기</a>
+        <a href="{% url 'main:showdetail' blog.id %}">..더보기</a>
     </div>
 {% endfor %}
 </div>
