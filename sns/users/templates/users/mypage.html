@@ -12,6 +12,7 @@
                 <a href="{% url 'users:follow' user.id %}"><button type="button" class="btn btn-info">팔로우</button></a>
             {% endif %}
         {% endif %}
+
         <p>팔로워<br>{{user.profile.followers.count}}명</p>
         {%for follower in user.profile.followers.all %}
             <a href="{% url 'users:mypage' follower.user.id %}">{{ follower.user.username }}</a>
@@ -21,6 +22,7 @@
         {% for following in user.profile.followings.all %}
             <a href="{% url 'users:mypage' following.user.id %}">{{ following.user.username }}</a>
         {% endfor %}
+        
     <div>
         {% for blog in blogs %}
         <a href="{% url 'main:showdetail' blog.id %}">{{blog.title}}</a>
